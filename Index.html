@@ -1,0 +1,500 @@
+<html><head><base href="https://банк-аппликация.рф/"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Gakhramanov Банковское Приложение</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+}
+.app-container {
+    max-width: 414px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 40px);
+}
+.header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+}
+.rewards {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    margin-right: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.scrollable-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 15px;
+}
+.balance-section {
+    padding: 30px 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+.balance-label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+}
+.balance-amount {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: -0.5px;
+}
+.today-plus {
+    font-size: 14px;
+    color: #4CAF50;
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #e8f5e9;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-weight: 500;
+}
+.today-plus-icon {
+    width: 18px;
+    height: 18px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6px;
+}
+.today-plus-icon::before {
+    content: '+';
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+.action-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 20px;
+}
+.action-button {
+    text-align: center;
+    font-size: 15px;
+    flex: 1;
+    margin: 0 10px;
+    font-weight: 500;
+}
+.action-icon {
+    width: 100%;
+    height: 60px;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.action-icon:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+.action-icon:active {
+    transform: scale(0.95);
+    background-color: #d0d0d0;
+}
+.action-icon svg {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+}
+.action-icon:active svg {
+    transform: scale(0.9);
+}
+.promo-banner {
+    background-color: #222;
+    color: white;
+    padding: 18px;
+    margin: 0 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+.promo-icon {
+    background-color: #444;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 18px;
+    font-weight: 700;
+    font-size: 20px;
+}
+.promo-text {
+    flex-grow: 1;
+    font-weight: 300;
+}
+.promo-text div:first-child {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+.promo-text div:last-child {
+    font-size: 14px;
+    opacity: 0.8;
+}
+.calculator-button {
+    margin: 25px 20px;
+    padding: 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 16px; /* Reduced from 18px */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    line-height: 1.2; /* Added for better text wrapping */
+}
+.calculator-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+.calculator-button:active {
+    transform: scale(0.98);
+    background-color: #3d8b40;
+}
+.bottom-menu {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+.menu-item {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.menu-item:hover {
+    color: #4CAF50;
+}
+.menu-item:active {
+    transform: scale(0.95);
+}
+.menu-item svg {
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+}
+.menu-item:active svg {
+    transform: scale(0.9);
+}
+.withdraw-form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    z-index: 1000;
+}
+.withdraw-form.active {
+    transform: translateY(0);
+}
+.withdraw-form h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.withdraw-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.withdraw-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333333; /* Changed to a dark color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.withdraw-form button:hover {
+    background-color: #444444; /* Slightly lighter on hover */
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 999;
+}
+.overlay.active {
+    display: block;
+}
+.invite-friend {
+    text-align: center;
+    margin: 20px 0 30px; /* Increased bottom margin */
+}
+.invite-friend a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.invite-friend a:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+.invite-friend a:active {
+    transform: scale(0.95);
+    background-color: #d0d0d0;
+}
+.invite-friend-text {
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+gecko-coin-list-widget {
+    display: block;
+    margin: 20px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+</style>
+<script src="https://widgets.coingecko.com/gecko-coin-list-widget.js"></script>
+</head>
+<body>
+<div class="app-container">
+    <div class="header">
+        <div class="logo">Gakhramanov</div>
+        <div class="header-right">
+            <div class="rewards">перейти на PRO</div>
+            <div class="profile-icon" id="profileIcon">
+                <img src="https://банк-аппликация.рф/profile-photo.jpg" alt="Profile Photo" class="profile-photo">
+            </div>
+        </div>
+    </div>
+    
+    <div class="scrollable-content">
+        <div class="balance-section">
+            <div class="balance-label">Linda's card balance</div>
+            <div class="balance-amount">$521,098.31</div>
+            <div class="today-plus">
+                <span class="today-plus-icon"></span>
+                сегодня + $2,500
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <div class="action-button">
+                <div class="action-icon" id="investButton">
+                    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </div>
+                Инвестировать
+            </div>
+            <div class="action-button">
+                <div class="action-icon" id="withdrawButton">
+                    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                </div>
+                Вывести
+            </div>
+        </div>
+        
+        <div class="promo-banner">
+            <div class="promo-icon">$</div>
+            <div class="promo-text">
+                <div>Start sending money tax free</div>
+                <div>The best place for transactions to receive and send money. Start saving now!</div>
+            </div>
+        </div>
+        
+        <div class="calculator-button" id="calculatorBtn">
+            Рассчитать прибыль
+        </div>
+
+        <gecko-coin-list-widget locale="ru" outlined="true" coin-ids="" initial-currency="usd"></gecko-coin-list-widget>
+
+        <div class="invite-friend">
+            <a href="#" id="inviteFriend">пригласи друга</a>
+            <p class="invite-friend-text">пригласите + 2 друга, что бы перейти на PRO аккаунт и зарабатывайте с их дохода 2%</p>
+        </div>
+    </div>
+    
+    <div class="bottom-menu">
+        <div class="menu-item" id="homeButton">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <div>Home</div>
+        </div>
+        <div class="menu-item" id="activityButton">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <div>Activity</div>
+        </div>
+        <div class="menu-item" id="cardsButton">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+            <div>Cards</div>
+        </div>
+        <div class="menu-item" id="settingsButton">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            <div>Settings</div>
+        </div>
+    </div>
+
+    <div class="withdraw-form" id="withdrawForm">
+        <h3>Вывод средств</h3>
+        <input type="number" placeholder="Сумма для вывода" id="withdrawAmount">
+        <input type="text" placeholder="Номер карты или счета" id="withdrawDestination">
+        <button id="confirmWithdraw">Подтвердить</button>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const addClickAnimation = (element, message) => {
+        element.addEventListener('click', function(e) {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+            if (message) alert(message);
+        });
+    };
+
+    addClickAnimation(document.getElementById('investButton'), 'Функция "Инвестировать" в разработке');
+
+    const calculatorBtn = document.getElementById('calculatorBtn');
+    calculatorBtn.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+        }, 200);
+        window.open('https://websim.ai/c/5UIXbbEXqhP0IK7Um', '_blank');
+    });
+
+    addClickAnimation(document.getElementById('homeButton'), 'Переход в раздел "Home" в разработке');
+    addClickAnimation(document.getElementById('activityButton'), 'Переход в раздел "Activity" в разработке');
+    addClickAnimation(document.getElementById('cardsButton'), 'Переход в раздел "Cards" в разработке');
+    addClickAnimation(document.getElementById('settingsButton'), 'Переход в раздел "Settings" в разработке');
+
+    const profileIcon = document.getElementById('profileIcon');
+    profileIcon.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+        }, 200);
+        alert('Профиль пользователя в разработке');
+    });
+
+    const withdrawButton = document.getElementById('withdrawButton');
+    const withdrawForm = document.getElementById('withdrawForm');
+    const overlay = document.getElementById('overlay');
+    const confirmWithdraw = document.getElementById('confirmWithdraw');
+
+    withdrawButton.addEventListener('click', function() {
+        withdrawForm.classList.add('active');
+        overlay.classList.add('active');
+    });
+
+    overlay.addEventListener('click', function() {
+        withdrawForm.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    confirmWithdraw.addEventListener('click', function() {
+        const amount = document.getElementById('withdrawAmount').value;
+        const destination = document.getElementById('withdrawDestination').value;
+        if (amount && destination) {
+            alert(`Запрос на вывод ${amount} на ${destination} отправлен`);
+            withdrawForm.classList.remove('active');
+            overlay.classList.remove('active');
+        } else {
+            alert('Пожалуйста, заполните все поля');
+        }
+    });
+
+    const inviteFriend = document.getElementById('inviteFriend');
+    addClickAnimation(inviteFriend, 'Функция "Пригласи друга" в разработке');
+});
+</script>
+
+</body></html>
